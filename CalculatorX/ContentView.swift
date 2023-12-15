@@ -7,7 +7,7 @@ struct ContentView: View {
                 Button("7") {
                     
                 }
-                .background(Color.black)
+                .background(Color.red)
             }
         }
     }
