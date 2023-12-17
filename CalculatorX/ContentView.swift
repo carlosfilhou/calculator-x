@@ -6,7 +6,7 @@ struct ContentView: View {
 
 
     var body: some View {
-        VStack(spacing: 1) {
+        VStack(spacing: 0) {
             HStack {
                 Button("7") {
                     
@@ -52,7 +52,7 @@ struct ContentView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color(graphiteColor))
+                .background(Color.green)
             }
         }
         .background(Color(graphiteColor))
