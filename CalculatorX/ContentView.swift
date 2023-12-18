@@ -2,11 +2,51 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let graphiteColor = Color(UIColor(red: 120/255, green: 123/255, blue: 118/255, alpha: 1.0))
+    let graphiteColor = Color(UIColor(red: 100/255, green: 103/255, blue: 98/255, alpha: 1.0))
+    
+    let darkerColor = Color(UIColor(red: 60/255, green: 63/255, blue: 58/255, alpha: 1.0))
+
+    let blackCustomColor = Color(UIColor(red: 40/255, green: 43/255, blue: 38/255, alpha: 1.0))
+
+    @State var result = "0"
 
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .trailing, spacing: 0) {
+            HStack {
+                Text(result)
+                    .padding()
+                    .font(.largeTitle)
+                    .foregroundColor(Color.white)
+            }
+            .background(Color.black)
+            
+            HStack {
+                Button("AC") {
+                    
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                Button("+/-") {
+                    
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                Button("%") {
+                    
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                Button("÷") {
+                    
+                }
+                .font(.title)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.green)
+            }
+            .background(Color(darkerColor))
+            
             HStack {
                 Button("7") {
                     
@@ -30,6 +70,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.green)
             }
+            .background(Color(graphiteColor))
             
             HStack {
                 Button("4") {
@@ -54,10 +95,60 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color.green)
             }
+            .background(Color(graphiteColor))
+            
+            HStack {
+                Button("1") {
+                    
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                Button("2") {
+                    
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                Button("3") {
+                    
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                Button("+") {
+                    
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.green)
+            }
+            .background(Color(graphiteColor))
+            
+            GeometryReader { geometry in
+                HStack {
+                    Button("0") {
+                        
+                    }
+                    .padding()
+                    .frame(minWidth: geometry.size.width / 2)
+                    Button(",") {
+                        
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    Button("=") {
+                        
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.green)
+                }
+            }
+            .frame(maxHeight: 52)
+            .background(Color(graphiteColor))
         }
-        .background(Color(graphiteColor))
+        .background(.black)
         .foregroundColor(.white)
     }
+    
 }
 
 #Preview {
