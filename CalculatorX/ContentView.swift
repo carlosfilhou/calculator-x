@@ -5,24 +5,29 @@ struct ContentView: View {
     let graphiteColor = Color(UIColor(red: 100/255, green: 103/255, blue: 98/255, alpha: 1.0))
     
     let darkerColor = Color(UIColor(red: 60/255, green: 63/255, blue: 58/255, alpha: 1.0))
-
+    
     let blackCustomColor = Color(UIColor(
         red: 20/255,
         green: 21/255,
         blue: 19/255,
         alpha: 1.0
     ))
-
+    
     @State var result = "0"
-
-
+    
+    
     var body: some View {
         VStack(alignment: .trailing, spacing: 0) {
+            Spacer()
             HStack {
                 Text(result)
                     .padding()
-                    .font(.largeTitle)
+                    .lineLimit(1)
+                    .font(.system(size: CGFloat(80 /
+                                                Int((Double(result.count + 10) / 9.0)))))
                     .foregroundColor(Color.white)
+                    .frame(maxWidth: .infinity)
+                    .fixedSize(horizontal: true, vertical: false)
             }
             
             HStack {
@@ -45,7 +50,7 @@ struct ContentView: View {
                     
                 }
                 .font(.title)
-                .padding()
+                .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
                 .background(Color.green)
             }
@@ -53,12 +58,12 @@ struct ContentView: View {
             
             HStack {
                 Button("7") {
-                    
+                    result += "7"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("8") {
-                    
+                    result += "8"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -70,7 +75,7 @@ struct ContentView: View {
                 Button("X") {
                     
                 }
-                .padding()
+                .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
                 .background(Color.green)
             }
@@ -95,7 +100,7 @@ struct ContentView: View {
                 Button("-") {
                     
                 }
-                .padding()
+                .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
                 .background(Color.green)
             }
@@ -120,7 +125,7 @@ struct ContentView: View {
                 Button("+") {
                     
                 }
-                .padding()
+                .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
                 .background(Color.green)
             }
@@ -141,12 +146,12 @@ struct ContentView: View {
                     Button("=") {
                         
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 40)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.green)
                 }
             }
-            .frame(maxHeight: 52)
+            .frame(maxHeight: 94)
             .background(Color(graphiteColor))
         }
         .background(Color(blackCustomColor))
