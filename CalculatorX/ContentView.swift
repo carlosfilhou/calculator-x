@@ -24,7 +24,7 @@ struct ContentView: View {
                     .padding()
                     .lineLimit(1)
                     .font(.system(size: CGFloat(80 /
-                                                Int((Double(result.count + 10) / 9.0)))))
+                        Int((Double(result.count + 10) / 9.0)))))
                     .foregroundColor(Color.white)
                     .frame(maxWidth: .infinity)
                     .fixedSize(horizontal: true, vertical: false)
