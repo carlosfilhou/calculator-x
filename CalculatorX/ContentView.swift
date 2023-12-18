@@ -6,7 +6,12 @@ struct ContentView: View {
     
     let darkerColor = Color(UIColor(red: 60/255, green: 63/255, blue: 58/255, alpha: 1.0))
 
-    let blackCustomColor = Color(UIColor(red: 40/255, green: 43/255, blue: 38/255, alpha: 1.0))
+    let blackCustomColor = Color(UIColor(
+        red: 20/255,
+        green: 21/255,
+        blue: 19/255,
+        alpha: 1.0
+    ))
 
     @State var result = "0"
 
@@ -19,7 +24,6 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .foregroundColor(Color.white)
             }
-            .background(Color.black)
             
             HStack {
                 Button("AC") {
@@ -145,7 +149,7 @@ struct ContentView: View {
             .frame(maxHeight: 52)
             .background(Color(graphiteColor))
         }
-        .background(.black)
+        .background(Color(blackCustomColor))
         .foregroundColor(.white)
     }
     
