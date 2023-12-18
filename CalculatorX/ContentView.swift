@@ -32,7 +32,7 @@ struct ContentView: View {
             
             HStack {
                 Button("AC") {
-                    
+                    result = "0"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
