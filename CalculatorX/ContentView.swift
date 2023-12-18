@@ -133,7 +133,7 @@ struct ContentView: View {
                     }
                     .padding()
                     .frame(minWidth: geometry.size.width / 2)
-                    Button(",") {
+                    Button(".") {
                         
                     }
                     .padding()
