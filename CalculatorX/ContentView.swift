@@ -13,11 +13,10 @@ struct ContentView: View {
         alpha: 1.0
     ))
     
-    @State var previous = 0
-    @State var result = 0
-    @State var reset = "C"
-    @State var operation = 0
+    @State var previous = 0.0
+    @State var result = 0.0
     
+    @State var operation = 0
     @State var previousOperation = 0
     
     func process(digit: Int) {
@@ -26,22 +25,46 @@ struct ContentView: View {
             previousOperation = operation
             operation = -1
         }
-        result = (result * 10) + digit
+        result = (result * 10) + Double(digit)
     }
     
     func calculate() {
         if previousOperation == 1 { // sum
             result = previous + result
             previousOperation = 0
+        } else if previousOperation == 2 { // sum
+            result = previous - result
+            previousOperation = 0
+        } else if previousOperation == 3 { // sum
+            result = previous * result
+            previousOperation = 0
+        } else if previousOperation == 4 { // sum
+            result = previous / result
+            previousOperation = 0
         }
         previous = result
+    }
+    
+    func reset() {
+        result = 0
+        previous = 0
+        previousOperation = 0
+        operation = 0
+    }
+    
+    func removeZeroFromEnd(value: Double) -> String{
+        let f = NumberFormatter()
+        let number = NSNumber(value: value)
+        f.minimumFractionDigits = 0
+        f.maximumFractionDigits = 16
+        return f.string(from: number) ?? ""
     }
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 0) {
             Spacer()
             HStack {
-                Text(String(result))
+                Text(String(removeZeroFromEnd(value: result)))
                     .padding()
                     .lineLimit(1)
                     .font(.system(size: CGFloat(80 /
@@ -49,17 +72,12 @@ struct ContentView: View {
                     .foregroundColor(Color.white)
                     .frame(maxWidth: .infinity)
                     .fixedSize(horizontal: true, vertical: false)
-                
             }
             
             HStack {
                 
-                Button(reset) {
-                    result = 0
-                    previous = 0
-                    previousOperation = 0
-                    operation = 0
-                    reset = "AC"
+                Button("AC") {
+                    reset()
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -74,7 +92,8 @@ struct ContentView: View {
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("÷") {
-                    
+                    calculate()
+                    operation = 4
                 }
                 .font(.title)
                 .padding(.vertical, 40)
@@ -86,23 +105,22 @@ struct ContentView: View {
             HStack {
                 Button("7") {
                     process(digit: 7)
-                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("8") {
                     process(digit: 8)
-                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("9") {
-                    reset = "C"
+                    process(digit: 9)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("X") {
-                    
+                    calculate()
+                    operation = 3
                 }
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
@@ -112,22 +130,23 @@ struct ContentView: View {
             
             HStack {
                 Button("4") {
-                    reset = "C"
+                    process(digit: 4)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("5") {
-                    reset = "C"
+                    process(digit: 5)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("6") {
-                    reset = "C"
+                    process(digit: 6)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("-") {
-                    
+                    calculate()
+                    operation = 2
                 }
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
@@ -137,17 +156,17 @@ struct ContentView: View {
             
             HStack {
                 Button("1") {
-                    reset = "C"
+                    process(digit: 1)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("2") {
-                    reset = "C"
+                    process(digit: 2)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("3") {
-                    reset = "C"
+                    process(digit: 3)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
