@@ -13,26 +13,53 @@ struct ContentView: View {
         alpha: 1.0
     ))
     
-    @State var result = "0"
+    @State var previous = 0
+    @State var result = 0
+    @State var reset = "C"
+    @State var operation = 0
     
+    @State var previousOperation = 0
+    
+    func process(digit: Int) {
+        if operation > 0 {
+            result = 0
+            previousOperation = operation
+            operation = -1
+        }
+        result = (result * 10) + digit
+    }
+    
+    func calculate() {
+        if previousOperation == 1 { // sum
+            result = previous + result
+            previousOperation = 0
+        }
+        previous = result
+    }
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 0) {
             Spacer()
             HStack {
-                Text(result)
+                Text(String(result))
                     .padding()
                     .lineLimit(1)
                     .font(.system(size: CGFloat(80 /
-                        Int((Double(result.count + 10) / 9.0)))))
+                        Int((Double(String(result).count + 10) / 8.0)))))
                     .foregroundColor(Color.white)
                     .frame(maxWidth: .infinity)
                     .fixedSize(horizontal: true, vertical: false)
+                
             }
             
             HStack {
-                Button("AC") {
-                    result = "0"
+                
+                Button(reset) {
+                    result = 0
+                    previous = 0
+                    previousOperation = 0
+                    operation = 0
+                    reset = "AC"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -58,17 +85,19 @@ struct ContentView: View {
             
             HStack {
                 Button("7") {
-                    result += "7"
+                    process(digit: 7)
+                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("8") {
-                    result += "8"
+                    process(digit: 8)
+                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("9") {
-                    
+                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -83,17 +112,17 @@ struct ContentView: View {
             
             HStack {
                 Button("4") {
-                    
+                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("5") {
-                    
+                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("6") {
-                    
+                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -108,22 +137,23 @@ struct ContentView: View {
             
             HStack {
                 Button("1") {
-                    
+                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("2") {
-                    
+                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("3") {
-                    
+                    reset = "C"
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 Button("+") {
-                    
+                    calculate()
+                    operation = 1
                 }
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
@@ -134,7 +164,7 @@ struct ContentView: View {
             GeometryReader { geometry in
                 HStack {
                     Button("0") {
-                        
+                        result = (result * 10) + 0
                     }
                     .padding()
                     .frame(minWidth: geometry.size.width / 2)
@@ -144,7 +174,9 @@ struct ContentView: View {
                     .padding()
                     .frame(maxWidth: .infinity)
                     Button("=") {
-                        
+                        calculate()
+                        previousOperation = 9999999
+                        operation = 9999999
                     }
                     .padding(.vertical, 40)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
