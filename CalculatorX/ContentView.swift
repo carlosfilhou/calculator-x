@@ -19,6 +19,7 @@ struct ContentView: View {
     @State var operation = 0
     @State var previousOperation = 0
     
+    
     func process(digit: Int) {
         if operation > 0 {
             result = 0
