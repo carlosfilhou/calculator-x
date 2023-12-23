@@ -69,13 +69,13 @@ struct ContentView: View {
                     .padding()
                     .lineLimit(1)
                     .font(.system(size: CGFloat(80 /
-                        Int((Double(String(result).count + 10) / 8.0)))))
+                                                Int((Double(String(result).count + 10) / 8.0)))))
                     .foregroundColor(Color.white)
                     .frame(maxWidth: .infinity)
                     .fixedSize(horizontal: true, vertical: false)
             }
             
-            HStack {
+            HStack() {
                 
                 Button("AC") {
                     reset()
