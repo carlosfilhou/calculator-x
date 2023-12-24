@@ -59,11 +59,11 @@ struct testView2: View {
                                     .frame(width: 260, height: 12)
                                     .foregroundColor(.gray)
                                     .padding(-20)
-                                Text("T")
-                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                    .bold()
-                                    .foregroundColor(.white)
-                                    .shadow(radius: 2)
+                                Image("butterfly")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 300, height: 260)
+                                    .padding(-20)
                             }
                         }
                     }
