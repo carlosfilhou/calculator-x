@@ -1,8 +1,14 @@
+//
+// ContentView.swift
+//
+// created by carlosfilhou
+
 import SwiftUI
 
 struct ContentView: View {
     
-    let graphiteColor = Color(UIColor(red: 100/255, green: 103/255, blue: 98/255, alpha: 1.0))
+    let graphiteColor = Color(UIColor(red: 100/255, green: 103/255,
+                                      blue: 98/255, alpha: 1.0))
     
     let darkerColor = Color(UIColor(red: 60/255, green: 63/255, blue: 58/255, alpha: 1.0))
     

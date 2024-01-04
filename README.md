@@ -6,7 +6,7 @@ My calculator project in Swift / Meu projeto de calculadora em Swift
 
 <p align="center">
   <img src=".github/images/calc1.png" align="center" width=302>
-  <img src=".github/images/calc2.png" align="center" width=285>
+  <img src=".github/images/calc2.png" align="center" width=270>
 </p>
 
 ## Requisitos
